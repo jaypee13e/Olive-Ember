@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Olive &amp; Ember | Wood-fired kitchen and café</title>
+    <meta
+      name="description"
+      content="Seasonal wood-fired cooking, good coffee and warm service. Browse the menu, plan your order and reserve a table online."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header>
+      <div class="w">
+        <a class="logo" href="#top">
+          Olive &amp; Ember
+          <small>Wood-fired kitchen and café</small>
+        </a>
+        <nav aria-label="Main">
+          <a href="#menu-section">Menu</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn sm" href="#reserve">Reserve</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="top" class="w hero">
+        <h1>Good food, <em>cooked on fire.</em></h1>
+        <p>
+          Seasonal plates from our wood oven, fresh coffee in the morning and
+          a table waiting for you at night.
+        </p>
+        <a class="btn" href="#reserve">Reserve a table</a>
+        <a class="btn ghost" href="#menu-section">See the menu</a>
+        <div class="info">
+          <span><b>Lunch</b> 12 to 2:30 pm</span>
+          <span><b>Dinner</b> 5:30 to 9:30 pm</span>
+          <span><b>Coffee</b> from 8 am</span>
+        </div>
+      </div>
+
+      <section id="menu-section">
+        <div class="w">
+          <h2>The menu</h2>
+          <p class="lead">
+            Filter by course or dietary need, then add dishes to plan your
+            order and see what the bill might be.
+          </p>
+          <div class="filters" id="cats" aria-label="Course"></div>
+          <div class="filters" id="diets" aria-label="Dietary needs"></div>
+
+          <div class="order-layout">
+            <div id="menu" aria-live="polite"></div>
+
+            <aside class="card panel" aria-live="polite">
+              <h3>Your order</h3>
+              <div id="lines"></div>
+
+              <div class="row"><span>Subtotal</span><b id="sub"></b></div>
+              <label>Tip</label>
+              <div class="tips" id="tips"></div>
+              <div class="row"><span>Tip amount</span><b id="tipamt"></b></div>
+              <div class="row total"><span>Total</span><b id="total"></b></div>
+
+              <label for="split">Split between</label>
+              <select id="split">
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+              <div class="row"><span>Each pays</span><b id="each"></b></div>
+              <p class="note">Prices include tax. Illustrative demo menu.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="w">
+          <h2>Our kitchen</h2>
+          <p class="lead">Simple ideas, cooked well.</p>
+          <div class="grid">
+            <div class="card">
+              <h3>Local first</h3>
+              <p class="note">
+                We buy from nearby farms and fishers, so the menu follows the
+                seasons.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Real fire</h3>
+              <p class="note">
+                Our oven burns hardwood, which gives everything a gentle smoky
+                flavor.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Room for everyone</h3>
+              <p class="note">
+                Plenty of vegetarian, vegan and gluten-free dishes, clearly
+                marked on every plate.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reserve">
+        <div class="w">
+          <h2>Reserve a table</h2>
+          <p class="lead">
+            Tell us when you’re coming. We’ll confirm by email.
+          </p>
+          <div id="done"></div>
+          <form class="card" id="rf" novalidate>
+            <div class="two">
+              <div>
+                <label for="rd">Date</label>
+                <select id="rd"></select>
+              </div>
+              <div>
+                <label for="rt">Time</label>
+                <select id="rt"></select>
+              </div>
+            </div>
+
+            <label for="rg">Guests</label>
+            <select id="rg">
+              <option>1 guest</option>
+              <option selected>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
+              <option>5 guests</option>
+              <option>6 guests</option>
+              <option>7 guests</option>
+              <option>8 guests</option>
+            </select>
+
+            <div class="two">
+              <div>
+                <label for="nm">Full name</label>
+                <input id="nm" required maxlength="60" autocomplete="name" />
+              </div>
+              <div>
+                <label for="em">Email</label>
+                <input id="em" type="email" required autocomplete="email" />
+              </div>
+            </div>
+
+            <label for="nt">Notes (allergies, celebrations)</label>
+            <textarea id="nt" rows="3" maxlength="400"></textarea>
+
+            <label class="ck">
+              <input type="checkbox" id="pre" />Send my order above as a
+              pre-order
+            </label>
+
+            <div class="err" id="err" role="alert"></div>
+            <button class="btn" style="margin-top: 18px">Reserve table</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="w">
+          <h2>Good to know</h2>
+          <details>
+            <summary>Do you take walk-ins?</summary>
+            <p>
+              Always, when we have space. Booking ahead is the safest way to
+              get your preferred time.
+            </p>
+          </details>
+          <details>
+            <summary>Can you cater for allergies?</summary>
+            <p>
+              Yes. Tell us when you book or when you sit down, and our kitchen
+              will guide you to safe dishes.
+            </p>
+          </details>
+          <details>
+            <summary>Is there room for large groups?</summary>
+            <p>
+              For parties of nine or more, send us a message and we’ll set up a
+              shared menu.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <div class="pitch">
+      <div class="w">
+        <div>
+          <strong>Want a website for your restaurant?</strong>
+          <p>
+            Demo site designed and built by <span id="devname"></span>. Tasty
+            to look at and built to fill your tables.
+          </p>
+        </div>
+        <a class="btn" id="devmail" href="#">Get a free quote</a>
+      </div>
+    </div>
+
+    <footer class="fo">
+      <div class="w">
+        © Olive &amp; Ember. This is a demo business made for portfolio
+        purposes. Dishes and prices shown are fictional.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
